@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/migrate', function () {
     Artisan::call('migrate');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -150,3 +150,45 @@ h4 {
     object-fit: cover;
     border-radius: 15px;
 }
+
+/*-------------------------------------------------------*/
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4e73df 0%, #FFCA27 100%);
+}
+
+.input-group-text {
+    background-color: #f3f4f6 !important;
+    color: #FFCA27;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #FFCA27;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #FFCA27;
+    color: #fff;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.text-primary {
+    color: #FFCA27 !important;
+}
+
+.card-footer a {
+    color: #FFCA27;
+}
+
+.card-footer a:hover {
+    color: #d39e00;
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------*/
