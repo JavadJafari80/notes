@@ -13,3 +13,7 @@ Route::get('/migrate', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+});
