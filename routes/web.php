@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/migrate', function () {
-    Artisan::call('migrate');
-});
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
@@ -61,9 +58,4 @@ Route::prefix('Setting')->group(function () {
     Route::post('clearCache', [SettingController::class, 'clearCache'])->name('Setting.clearCache');
     Route::post('runMigrations', [SettingController::class, 'runMigrations'])->name('Setting.runMigrations');
     Route::post('optimizeApp', [SettingController::class, 'optimizeApp'])->name('Setting.optimizeApp');
-});
-
-
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
 });
