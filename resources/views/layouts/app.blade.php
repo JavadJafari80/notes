@@ -14,69 +14,62 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Login Css -->
     <link rel="stylesheet" href="{{ asset('css/Login.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive_991.css') }}" media="(max-width:991px)">
+    <link rel="stylesheet" href="{{ asset('css/responsive_768.css') }}" media="(max-width:768px)">
+    <link rel="stylesheet" href="{{ asset('css/font.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+<div class="sidebar__nav border-top border-left  ">
+    <span class="bars d-none padding-0-18"></span>
+    <a class="header__logo  d-none" href="https://netcopy.ir"></a>
+    <div class="profile__info border cursor-pointer text-center">
+        <div class="avatar__img"><img src="{{ asset('image/imageProject/pro.jpg')}}" class="avatar___img">
+            <input type="file" accept="image/*" class="hidden avatar-img__input">
+            <div class="v-dialog__container" style="display: block;"></div>
+            <div class="box__camera default__avatar"></div>
+        </div>
+        <span class="profile__name">کاربر : {{ Auth::user()->name }}</span>
     </div>
+
+    <ul>
+        <li class="item-li i-dashboard is-active"><a href="{{ route('home') }}">پیشخوان</a></li>
+        <li class="item-li i-categories"><a href="{{ route('categories') }}">دسته بندی ها</a></li>
+        <li class="item-li i-users"><a href="{{ route('users') }}"> کاربران</a></li>
+        <li class="item-li i-user__inforamtion"><a href="user-information.html">اطلاعات کاربری</a></li>
+        <li class="item-li i-tickets"><a href="{{ route('setting') }}">تنظیمات</a></li>
+    </ul>
+
+</div>
+<div class="content">
+        <div class="position-fixed header d-flex item-center bg-white border-bottom padding-12-30" style="width: calc(100% - 250px);">
+            <div class="header__right d-flex flex-grow-1 item-center">
+                <span class="bars"></span>
+                <a class="header__logo" href="https://netcopy.ir"></a>
+            </div>
+            <div class="header__left d-flex flex-end item-center margin-top-2">
+                <span class="account-balance font-size-12">موجودی : 2500,000 تومان</span>
+                <div class="notification margin-15">
+                    <a class="notification__icon"></a>
+                    <div class="dropdown__notification">
+                        <div class="content__notification">
+                            <span class="font-size-13">موردی برای نمایش وجود ندارد</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="logout" title="خروج"></a>
+            </div>
+        </div>
+    @yield('content')
+</div>
+
+
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/js.js') }}"></script>
 </body>
 </html>
