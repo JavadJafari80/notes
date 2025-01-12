@@ -35,7 +35,6 @@ class NoteController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
-        dd($validator);
 
         $note = Note::create([
             'user_id' => $request->user()->id,
