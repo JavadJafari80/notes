@@ -20,6 +20,15 @@ class NoteController extends Controller
         $notes = Note::where('user_id', $user->id)->get();
         return response()->json($notes);
     }
+    public function show($id)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+        $notes = Note::where('user_id',$user->id)->where('id',$id)->get();
+        return response()->json($notes);
+    }
 
     public function store(Request $request)
     {
