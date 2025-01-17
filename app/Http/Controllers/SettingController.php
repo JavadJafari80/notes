@@ -16,6 +16,11 @@ class SettingController extends Controller
         Artisan::call('cache:clear');
         return response()->json(['message' => 'کش با موفقیت پاک شد.']);
     }
+    public function clearRouteCache(Request $request)
+    {
+        Artisan::call('route:clear');
+        return response()->json(['message' => 'کش روت ها با موفقیت پاک شد.']);
+    }
 
     public function runMigrations(Request $request)
     {

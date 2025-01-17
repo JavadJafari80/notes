@@ -13,6 +13,7 @@
         <div class="col-md-6 offset-md-3">
             <!-- دکمه‌ها -->
             <button id="clearCacheBtn" class="btn btn-danger btn-block mb-3">پاک‌سازی کش</button>
+            <button id="clearRouteCacheBtn" class="btn btn-danger btn-block mb-3"> پاک‌سازی کش روت</button>
             <button id="runMigrationsBtn" class="btn btn-warning btn-block mb-3">اجرای مایگریشن‌ها</button>
             <button id="optimizeAppBtn" class="btn btn-success btn-block mb-3">بهینه‌سازی اپلیکیشن</button>
         </div>
@@ -29,6 +30,22 @@
             $('#clearCacheBtn').on('click', function () {
                 $.ajax({
                     url: '{{ route('Setting.clearCache') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        $('#message').removeClass('alert-danger alert-warning alert-success').addClass('alert-success').text(response.message).show();
+                    },
+                    error: function () {
+                        $('#message').removeClass('alert-success alert-warning').addClass('alert-danger').text('خطا در پاک‌سازی کش').show();
+                    }
+                });
+            });
+
+            $('#clearRouteCacheBtn').on('click', function () {
+                $.ajax({
+                    url: '{{ route('Setting.clearRouteCache') }}',
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}'

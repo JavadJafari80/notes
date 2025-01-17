@@ -56,6 +56,7 @@ Route::put('/user/{id}/role', [UserController::class, 'updateRole'])->name('user
 Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 Route::prefix('Setting')->group(function () {
     Route::post('clearCache', [SettingController::class, 'clearCache'])->name('Setting.clearCache');
+    Route::post('clearCache', [SettingController::class, 'clearRouteCache'])->name('Setting.clearRouteCache');
     Route::post('runMigrations', [SettingController::class, 'runMigrations'])->name('Setting.runMigrations');
     Route::post('optimizeApp', [SettingController::class, 'optimizeApp'])->name('Setting.optimizeApp');
 });
